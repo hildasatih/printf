@@ -16,19 +16,16 @@ int _printf(const char *format, ...)
 		if (format[y] != '%')
 		{
 			_myputchar(format[y]);
-			count += 1;
 		}
 		else if (format[y + 1] == 'c')
 		{
 			_myputchar(va_arg(args, int));
 			y++;
-			count += 1;
 		}
 		else if (format[y + 1] == 's')
 		{
 			str_count = _mystring(va_arg(args, char *));
 			y++;
-			count += 1;
 		}
 		else if (format[y + 1] == '%')
 		{
@@ -40,6 +37,7 @@ int _printf(const char *format, ...)
 			_myputchar(format[y]);
 			y++;
 		}
+		count += 1;
 	}
 	va_end(args);
 	return (count);
