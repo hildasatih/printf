@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 int _printf(const char *format, ...);
-int _myputs(char *c);
+int _mystring(char *str);
 int _myputchar(char c);
 
 #endif

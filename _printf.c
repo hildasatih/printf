@@ -6,43 +6,41 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, count = 0, str_count;
+	int y, count = 0, str_count;
 	char c;
 	va_list args;
 
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (y = 0; format[y] != '\0'; y++)
 	{
-		if (format[i] == '%')
+		if (format[y] != '%')
 		{
-			format++;
-			if (format[i] == '\0')
-				break;
-			if (format[i] == 'c')
-			{
-				c = va_arg(args, int);
-				_myputchar(c);
-				count++;
-			}
-			else if (format[i + 1] == 's')
-			{
-				str_count = _myputs(va_arg(args, char*));
-				i++;
-				count += (str_count - 1);
-			}
-			else if (format[i] == '%')
-			{
-				_myputchar('%');
-				count++;
-			}
+			_myputchar(format[y]);
+			count += 1;
+		}
+		else if (format[y + 1] == 'c')
+		{
+			_myputchar(va_arg(args, int));
+			y++;
+			count += 1;
+		}
+		else if (format[y + 1] == 's')
+		{
+			str_count = _mystring(va_arg(args, char *));
+			y++;
+			count += 1;
+		}
+		else if (format[y + 1] == '%')
+		{
+			_myputchar('%');
+			y++;
 		}
 		else
 		{
-			_myputchar(format[i]);
-			count++;
+			_myputchar(format[y]);
+			y++;
 		}
-		format++;
 	}
-	end_arg(args);
+	va_end(args);
 	return (count);
-}	
+}
