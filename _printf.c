@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 		{
 			str_count = _mystring(va_arg(args, char *));
 			y++;
+			count += (str_count - 1);
 		}
 		else if (format[y + 1] == '%')
 		{
