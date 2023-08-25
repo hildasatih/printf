@@ -32,11 +32,6 @@ int _printf(const char *format, ...)
 			_myputchar('%');
 			y++;
 		}
-		else
-		{
-			_myputchar(format[y]);
-			y++;
-		}
 		count += 1;
 		y++;
 	}
