@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int y = 0, count = 0, str_count;
+	int y = 0, count = 0, int numb;
 	va_list args;
 
 	va_start(args, format);
@@ -16,25 +16,15 @@ int _printf(const char *format, ...)
 		{
 			_myputchar(format[y]);
 		}
-		else if (format[y + 1] == 'c')
+		else if ((format[y + 1] == 'd') || (format[y + 1] == 'i'))
 		{
-			_myputchar(va_arg(args, int));
+			numb = (va_arg(args, int));
+			_myints(numb);
 			y++;
 		}
-		else if (format[y + 1] == 's')
-		{
-			str_count = _mystring(va_arg(args, char *));
-			y++;
-			count += (str_count - 1);
-		}
-		else if (format[y + 1] == '%')
-		{
-			_myputchar('%');
-			y++;
-		}
-		y++;
 		count += 1;
+		y++;
 	}
 	va_end(args);
 	return (count);
-}
+}                         
