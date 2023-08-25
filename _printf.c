@@ -6,12 +6,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int y, count = 0, str_count;
-	char c;
+	int y = 0, count = 0, str_count;
 	va_list args;
 
 	va_start(args, format);
-	for (y = 0; format[y] != '\0'; y++)
+	while (format[y] != '\0')
 	{
 		if (format[y] != '%')
 		{
@@ -39,6 +38,7 @@ int _printf(const char *format, ...)
 			y++;
 		}
 		count += 1;
+		y++;
 	}
 	va_end(args);
 	return (count);
