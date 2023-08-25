@@ -32,7 +32,6 @@ int _printf(const char *format, ...)
 			_myputchar('%');
 			y++;
 		}
-		count += 1;
 		y++;
 	}
 	va_end(args);
